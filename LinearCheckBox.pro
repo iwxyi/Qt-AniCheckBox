@@ -17,11 +17,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     linear_check_box/anicheckbox.cpp \
+    linear_check_box/checkbox1.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     linear_check_box/anicheckbox.h \
+    linear_check_box/checkbox1.h \
     mainwindow.h
 
 INCLUDEPATH += \

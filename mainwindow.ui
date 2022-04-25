@@ -27,6 +27,22 @@
      <string>CheckBox</string>
     </property>
    </widget>
+   <widget class="CheckBox1" name="checkBox_2">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>20</y>
+      <width>231</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font-size: 30px;</string>
+    </property>
+    <property name="text">
+     <string>CheckBox</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -45,6 +61,11 @@
    <class>AniCheckBox</class>
    <extends>QCheckBox</extends>
    <header>anicheckbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>CheckBox1</class>
+   <extends>QCheckBox</extends>
+   <header>checkbox1.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

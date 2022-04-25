@@ -3,6 +3,9 @@
 
 #include <QCheckBox>
 #include <QPropertyAnimation>
+#include <QPainter>
+#include <QPainterPath>
+#include <QDebug>
 
 class AniCheckBox : public QCheckBox
 {
@@ -19,13 +22,15 @@ protected:
     void paintEvent(QPaintEvent *) override;
     void enterEvent(QEvent *e) override;
     void leaveEvent(QEvent *e) override;
+    bool hitButton(const QPoint &pos) const override;
+
+    virtual void checkStateChanged(int state);
 
     virtual void drawBox(QPainter &painter, QRectF rect);
 
     QPropertyAnimation* startAnimation(const QByteArray &property, double begin, double end, int duration = 500, QEasingCurve curve = QEasingCurve::OutQuad);
 
-
-private:
+protected:
     double getHoverProg() const;
     void setHoverProg(double prog);
     double getPartProg() const;
@@ -33,9 +38,9 @@ private:
     double getCheckProg() const;
     void setCheckProg(double prog);
 
-private:
+protected:
     int boxSide = 0; // 选择框边长，0为自适应
-    QColor foreColor = QColor("#2753ff");
+    QColor foreColor = QColor("#2753ff"); // 前景颜色
 
     double hoverProg = 0;   // 鼠标移上去的进度
     double partyProg = 0;   // 部分选中的进度

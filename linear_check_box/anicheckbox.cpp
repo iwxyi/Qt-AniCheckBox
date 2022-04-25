@@ -1,26 +1,12 @@
 #include "anicheckbox.h"
-#include <QPainter>
-#include <QPainterPath>
-#include <QDebug>
 
 AniCheckBox::AniCheckBox(QWidget *parent) : QCheckBox(parent)
 {
     setCursor(Qt::PointingHandCursor);
 
     connect(this, &QCheckBox::stateChanged, this, [=](int state) {
-        qInfo() << "状态变化：" << static_cast<Qt::CheckState>(state);
-        if (state == Qt::Unchecked)
-        {
-            startAnimation("check_prog", getCheckProg(), 0, 800, QEasingCurve::OutBounce);
-        }
-        else if (state == Qt::PartiallyChecked)
-        {
-
-        }
-        else if (state == Qt::Checked)
-        {
-            startAnimation("check_prog", getCheckProg(), 1, 500, QEasingCurve::OutBack);
-        }
+        // qInfo() << "状态变化：" << static_cast<Qt::CheckState>(state);
+        checkStateChanged(state);
     });
 }
 
@@ -81,12 +67,33 @@ void AniCheckBox::leaveEvent(QEvent *e)
     startAnimation("hover_prog", getHoverProg(), 0);
 }
 
+bool AniCheckBox::hitButton(const QPoint &pos) const
+{
+    return true;
+}
+
+void AniCheckBox::checkStateChanged(int state)
+{
+    if (state == Qt::Unchecked)
+    {
+        startAnimation("check_prog", getCheckProg(), 0, 800, QEasingCurve::OutBounce);
+    }
+    else if (state == Qt::PartiallyChecked)
+    {
+
+    }
+    else if (state == Qt::Checked)
+    {
+        startAnimation("check_prog", getCheckProg(), 1, 500, QEasingCurve::OutBack);
+    }
+}
+
 void AniCheckBox::drawBox(QPainter& painter, QRectF rect)
 {
     painter.setPen(foreColor);
     painter.setRenderHint(QPainter::Antialiasing, true);
 
-    // 绘制边缘方框
+    // 绘制边缘方框，和悬浮状态有关
     double radius = 3;
     radius *= (1 - hoverProg);
     painter.drawRoundedRect(rect, radius, radius);
