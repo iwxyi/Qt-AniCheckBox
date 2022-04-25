@@ -28,7 +28,7 @@ void AniCheckBox::paintEvent(QPaintEvent *)
         // 自适应大小：优先一行文字大小，其次按比例
         const double fixedProp = 0.8; // 默认比例
         QFontMetricsF fm(painter.font());
-        double side = fm.lineSpacing(); // 一行文字的高度
+        double side = fm.height(); // 一行文字的高度
         if (side >= this->height() * fixedProp)
             side = this->height() * fixedProp;
 
@@ -67,7 +67,7 @@ void AniCheckBox::leaveEvent(QEvent *e)
     startAnimation("hover_prog", getHoverProg(), 0);
 }
 
-bool AniCheckBox::hitButton(const QPoint &pos) const
+bool AniCheckBox::hitButton(const QPoint &) const
 {
     return true;
 }

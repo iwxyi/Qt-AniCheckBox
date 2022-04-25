@@ -90,6 +90,8 @@ void CheckBox1::drawBox(QPainter &painter, QRectF rect)
     {
         double gou = checkProg - threshold;
         const double threshold = 0.13;
+        const double restThreshold = 0.27;
+        // QPointF point0(l, t + radius); // 从边缘连接到√
         QPointF point1(l + w * 0.30, t + h * 0.45);
         QPointF point2(l + w * 0.45, t + h * 0.70);
         QPointF point3(l + w * 0.70, t + h * 0.32);
@@ -98,7 +100,7 @@ void CheckBox1::drawBox(QPainter &painter, QRectF rect)
         double prop = gou;
         if (prop >= threshold)
             prop = threshold;
-        prop = prop / threshold; // 在当前段的比例
+        prop = prop / threshold; // 在当前段的比例(偏中心）
         QPainterPath path;
         path.moveTo(point1);
         path.lineTo(point2);
@@ -108,7 +110,6 @@ void CheckBox1::drawBox(QPainter &painter, QRectF rect)
         if (gou > threshold)
         {
             gou -= threshold;
-            const double restThreshold = 0.27;
             double prop = gou / restThreshold; // 在当前段的比例
             QPainterPath path2;
             path2.moveTo(point2);

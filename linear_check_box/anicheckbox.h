@@ -22,7 +22,7 @@ protected:
     void paintEvent(QPaintEvent *) override;
     void enterEvent(QEvent *e) override;
     void leaveEvent(QEvent *e) override;
-    bool hitButton(const QPoint &pos) const override;
+    bool hitButton(const QPoint &) const override;
 
     virtual void checkStateChanged(int state);
 

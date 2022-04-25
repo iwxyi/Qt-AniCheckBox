@@ -19,7 +19,7 @@ protected:
     virtual void drawBox(QPainter &painter, QRectF rect) override;
 
 protected:
-    QColor uncheckedColor = QColor("#888888");
+    QColor uncheckedColor = QColor("#88888888");
 };
 
 #endif // CHECKBOX1_H
