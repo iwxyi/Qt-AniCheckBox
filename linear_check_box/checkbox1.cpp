@@ -36,7 +36,7 @@ void CheckBox1::checkStateChanged(int state)
     }
     else if (state == Qt::Checked)
     {
-        startAnimation("check_prog", getCheckProg(), 1, 1000, QEasingCurve::OutQuad);
+        startAnimation("check_prog", getCheckProg(), 1, 1000, QEasingCurve::Linear);
     }
 }
 
